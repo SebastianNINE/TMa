@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <title>Tatryana</title>
+</head>
+
+<body>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script>
+    document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+      //navigator.splashscreen.hide();
+      if (navigator.network.connection.type == Connection.NONE) {
+        networkError()
+      } else {
+        loadApp()
+      }
+    }
+
+    function loadApp() {
+      window.open('https://tatryana.sk','_self','location=no,zoom=no');
+    }
+
+    function networkError() {
+      navigator.notification.alert('Potrebujete pripojenie na internet.')
+      var $net = document.createElement('div')
+      $net.innerHTML = 'Potrebujete pripojenie na internet.'
+      document.body.appendChild($net)
+    }
+    </script>
+
+    <style>
+    body {
+      padding: 15px;
+      background: #FFF;
+      color: #01ced3;
+      text-align: center;
+    }
+    div {
+      font-size: 20px;
+    }
+    </style>
+</body>
+
+</html>
